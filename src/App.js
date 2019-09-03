@@ -12,7 +12,13 @@ class App extends Component {
   }
 
   changeNameHandler = () => {
-    console.log('Was Clicked');
+    //console.log('Was Clicked');
+
+    this.setState ({persons: [
+      {name: 'Jarvis', age: 22},
+      {name: 'Kanudo', age: 23},
+      {name: 'Rutuj', age: 30}
+    ]});
   }
 
   render() {

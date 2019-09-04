@@ -27,7 +27,7 @@ const App = props => {
   return (
     <div className="App">
       <h1>I am JARVIS</h1>
-      <button onClick={changeNameHandler.bind(this, 'Chutiyo')}>Switch Name</button>
+      <button onClick={() => changeNameHandler('Chutiyo!!!!')}>Switch Name</button>
       <Person 
         name = {personsState.persons[0].name} 
         age = {personsState.persons[0].age}/>

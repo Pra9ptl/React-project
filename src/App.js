@@ -14,23 +14,30 @@ const App = props => {
 
   console.log(personsState);
 
-  const changeNameHandler = () => {
+  const changeNameHandler = (newName) => {
     //console.log('Was Clicked');
   
     setPersonsState ({persons: [
       {name: 'Jarvis', age: 22},
       {name: 'Kanudo', age: 23},
-      {name: 'Rutuj', age: 30}
+      {name: newName, age: 30}
     ]});
   }
 
   return (
     <div className="App">
       <h1>I am JARVIS</h1>
-      <button onClick={changeNameHandler}>Switch Name</button>
-      <Person name = {personsState.persons[0].name} age = {personsState.persons[0].age}/>
-      <Person name = {personsState.persons[1].name} age = {personsState.persons[1].age}> My Hobbies: Coding</Person>
-      <Person name = {personsState.persons[2].name} age = {personsState.persons[2].age}/>
+      <button onClick={changeNameHandler.bind(this, 'Chutiyo')}>Switch Name</button>
+      <Person 
+        name = {personsState.persons[0].name} 
+        age = {personsState.persons[0].age}/>
+      <Person 
+        name = {personsState.persons[1].name} 
+        age = {personsState.persons[1].age} 
+        click={changeNameHandler.bind(this, 'Chutiyo!!')}> My Hobbies: Coding</Person>
+      <Person 
+        name = {personsState.persons[2].name} 
+        age = {personsState.persons[2].age}/>
     </div>
   );
 }

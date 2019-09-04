@@ -32,10 +32,21 @@ const App = props => {
     ]});
   }
 
+  const btnstyle = {
+    backgroundColor: 'green',
+    font: 'inherit',
+    border: '1px solid black',
+    padding: '8px',
+    color: 'white',
+    cursor: 'pointer'
+  }
+
   return (
     <div className="App">
       <h1>I am JARVIS</h1>
-      <button onClick={() => changeNameHandler('Chutiyo!!!!')}>Switch Name</button>
+      <button 
+        onClick={() => changeNameHandler('Chutiyo!!!!')}
+        style={btnstyle}>Switch Name</button>
       <Person 
         name = {personsState.persons[0].name} 
         age = {personsState.persons[0].age}/>

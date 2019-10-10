@@ -59,6 +59,7 @@ class App extends Component {
       backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
+      color: 'white',
       padding: '8px',
       cursor: 'pointer'
     };
@@ -78,20 +79,9 @@ class App extends Component {
                       age={p.age}
                       change={(event) => this.nameChangedHandler(event, p.id)} />
           })}
-
-          {/* <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age} />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind( this, 'Jarvis' )}
-            changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age} /> */}
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     return (

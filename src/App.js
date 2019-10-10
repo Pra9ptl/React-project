@@ -81,6 +81,8 @@ class App extends Component {
           })}
         </div>
       );
+
+      //changing class property
       style.backgroundColor = 'red';
     }
 

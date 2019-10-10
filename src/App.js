@@ -13,16 +13,24 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = ( newName ) => {
-    // console.log('Was clicked!');
-    // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
-    this.setState( {
-      persons: [
-        { name: newName, age: 28 },
-        { name: 'Dhruvin', age: 29 },
-        { name: 'Rutuj', age: 27 }
-      ]
-    } )
+  // switchNameHandler = ( newName ) => {
+  //   // console.log('Was clicked!');
+  //   // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
+  //   this.setState( {
+  //     persons: [
+  //       { name: newName, age: 28 },
+  //       { name: 'Dhruvin', age: 29 },
+  //       { name: 'Rutuj', age: 27 }
+  //     ]
+  //   } )
+  // }
+
+  deletePersonhandler = (p_index) => {
+      //alternative
+      //const per = [...this.state.persons];
+      const per = this.state.persons.slice();
+      per.splice(p_index, 1);
+      this.setState({ persons: per });
   }
 
   nameChangedHandler = ( event ) => {
@@ -30,7 +38,7 @@ class App extends Component {
       persons: [
         { name: 'Pranav', age: 28 },
         { name: event.target.value, age: 29 },
-        { name: 'Rutuj', age: 26 }
+        { name: 'Rutuj', age: 26 },
       ]
     } )
   }
@@ -54,7 +62,16 @@ class App extends Component {
     if ( this.state.showPersons ) {
       persons = (
         <div>
-          <Person
+
+          {/* Printing list of Component */}
+          {this.state.persons.map((p, index) => {
+            return <Person
+                      click={() => this.deletePersonhandler(index)} 
+                      name={p.name} 
+                      age={p.age} />
+          })}
+
+          {/* <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age} />
           <Person
@@ -64,7 +81,7 @@ class App extends Component {
             changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
           <Person
             name={this.state.persons[2].name}
-            age={this.state.persons[2].age} />
+            age={this.state.persons[2].age} /> */}
         </div>
       );
     }

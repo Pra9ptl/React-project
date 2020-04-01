@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
     persons: [
-      { id:'101', name: 'Pranav', age: 28 },
-      { id:'102', name: 'Dhruvin', age: 29 },
-      { id:'103', name: 'Rutuj', age: 26 }
+      { id: '101', name: 'Pranav', age: 28 },
+      { id: '102', name: 'Dhruvin', age: 29 },
+      { id: '103', name: 'Rutuj', age: 26 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -27,14 +27,14 @@ class App extends Component {
   // }
 
   deletePersonhandler = (p_index) => {
-      //alternative
-      //const per = [...this.state.persons];
-      const per = this.state.persons.slice();
-      per.splice(p_index, 1);
-      this.setState({ persons: per });
+    //alternative
+    //const per = [...this.state.persons];
+    const per = this.state.persons.slice();
+    per.splice(p_index, 1);
+    this.setState({ persons: per });
   }
 
-  nameChangedHandler = ( event, id ) => {
+  nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
@@ -47,15 +47,15 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState( { persons: persons } );
+    this.setState({ persons: persons });
   }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState( { showPersons: !doesShow } );
+    this.setState({ showPersons: !doesShow });
   }
 
-  render () {
+  render() {
     const style = {
       backgroundColor: 'green',
       font: 'inherit',
@@ -71,18 +71,18 @@ class App extends Component {
 
     let persons = null;
 
-    if ( this.state.showPersons ) {
+    if (this.state.showPersons) {
       persons = (
         <div>
 
           {/* Printing list of Component */}
           {this.state.persons.map((p, index) => {
             return <Person
-                      click={() => this.deletePersonhandler(index)} 
-                      name={p.name} 
-                      key={p.id}
-                      age={p.age}
-                      change={(event) => this.nameChangedHandler(event, p.id)} />
+              click={() => this.deletePersonhandler(index)}
+              name={p.name}
+              key={p.id}
+              age={p.age}
+              change={(event) => this.nameChangedHandler(event, p.id)} />
           })}
         </div>
       );
@@ -96,22 +96,24 @@ class App extends Component {
     }
 
     const classes = [];
-    if(this.state.persons.length <= 2){
+    if (this.state.persons.length <= 2) {
       classes.push('red');
     }
-    if(this.state.persons.length <=1){
+    if (this.state.persons.length <= 1) {
       classes.push('bold');
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button
+            style={style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }

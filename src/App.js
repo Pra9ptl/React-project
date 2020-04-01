@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 // import styled from 'styled-components';
 
 // const StyledButton = styled.button`
@@ -84,7 +84,7 @@ class App extends Component {
     // };
 
     let persons = null;
-    let btnClass = [classes.Button];
+    let btnClass= [classes.Button];
 
     if (this.state.showPersons) {
       persons = (
@@ -92,13 +92,12 @@ class App extends Component {
 
           {/* Printing list of Component */}
           {this.state.persons.map((p, index) => {
-            return <ErrorBoundary key={p.id}>
-              <Person
-                click={() => this.deletePersonhandler(index)}
-                name={p.name}
-                age={p.age}
-                change={(event) => this.nameChangedHandler(event, p.id)} />
-            </ErrorBoundary>
+            return <Person
+              click={() => this.deletePersonhandler(index)}
+              name={p.name}
+              key={p.id}
+              age={p.age}
+              change={(event) => this.nameChangedHandler(event, p.id)} />
           })}
         </div>
       );

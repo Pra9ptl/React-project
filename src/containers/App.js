@@ -5,7 +5,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     console.log("[App.js] Constructor");
     this.state = {
@@ -15,11 +15,12 @@ class App extends Component {
         { id: '103', name: 'Rutuj', age: 26 }
       ],
       otherState: 'some other value',
-      showPersons: false
+      showPersons: false,
+      showCockpit: true
     };
   }
 
-  static getDerivedStateFromProps(props, state){
+  static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDeriverdStateFromProps', props);
     return state;
   }
@@ -28,16 +29,16 @@ class App extends Component {
   //   console.log('[App.js] componentWillMount');
   // }
 
-  shouldComponentUpdate(nextProps, nextState){
+  shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('[App.js] componentDidMount');
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log('[App.js] componentDidUpdate');
   }
 
@@ -83,11 +84,16 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit
+        <button onClick={() => {
+          this.setState({ showCockpit: false });
+        }}>Remove Cockpit</button>
+        {this.state.showCockpit ? <Cockpit
           title={this.props.appTitle}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
           clicked={this.togglePersonsHandler} />
+          : null
+        }
         {persons}
       </div>
     );

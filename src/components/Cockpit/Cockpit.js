@@ -21,7 +21,20 @@ const cockpit = (props) => {
         setTimeout(() => {
             alert('Saved date to cloud');
         }, 1000);
+
+        return () => {
+            console.log('[Cockpit.js] Clean up work in useEffect');
+        };
     }, []);
+
+
+    //Runs on every update cycle
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] Clean up work in 2nd useEffect');
+        };
+    });
 
     const assignedClasses = [];
     let btnClass = '';

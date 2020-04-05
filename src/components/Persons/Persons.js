@@ -11,7 +11,8 @@ class Persons extends Component {
         console.log('[Persons.js] shouldComponentUpdate');
 
         // if there is no changes in the persons state then there is no need to re-render the component.
-        if(nextProps.persons !== this.props.persons){
+        //can also use PureComponent instead of manually coding for the condition to check.
+        if(nextProps.persons !== this.props.persons || nextProps.change !== this.props.change || nextProps.click !== this.props.click){
             return true;
         }else {
             return false;

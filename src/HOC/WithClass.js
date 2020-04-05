@@ -11,7 +11,8 @@ import React from 'react';
 const withClass = (WrappedComponent, className) => {
     return props => (
         <div className={className}>
-         <WrappedComponent />
+            {/* by using spread opperator we can pass props from persons.js to person.js */}
+         <WrappedComponent {...props} />
      </div>
     );
 }

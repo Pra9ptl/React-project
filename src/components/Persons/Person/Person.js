@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../../../HOC/Auxillary';
-// import classes from './Person.css';
+import withClass from '../../../HOC/withClass';
+import classes from './Person.css';
 
 class Person extends Component {
     render() {
@@ -15,5 +16,6 @@ class Person extends Component {
     };
 }
 
-export default Person;
+//this will lose all its props in the person component.
+export default withClass(Person, classes.Person);
 

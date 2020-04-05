@@ -1,8 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
 
 
 const cockpit = (props) => {
+
+    //using reference in react funcation based comonent
+    const toggleButtonRef = useRef(null);
+    //this will not work right after we assign the ref to null as JSX code is yet to be executed 
+    // toggleButtonRef.current.click();
 
     //Can use as many useEffect...
     //this useEffect will run initially and when persons is changed or also can pass multiple fields which it can depend on
@@ -18,10 +23,10 @@ const cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         //https requests...
-        setTimeout(() => {
-            alert('Saved data to cloud');
-        }, 1000);
-
+        // setTimeout(() => {
+        //     alert('Saved data to cloud');
+        // }, 1000);
+        toggleButtonRef.current.click();
         return () => {
             console.log('[Cockpit.js] Clean up work in useEffect');
         };
@@ -54,6 +59,7 @@ const cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is really working!</p>
             <button
+            ref = {toggleButtonRef}
                 className={btnClass} onClick={props.clicked}>Toggle Persons</button>
         </div>
     );

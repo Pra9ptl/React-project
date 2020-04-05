@@ -6,8 +6,14 @@ import PropTypes from 'prop-types';
 
 class Person extends Component {
 
+    constructor(props) {
+        super(props)
+        this.inputElementRef = React.createRef();
+    }
+
     componentDidMount() {
-        this.inputElement.focus();
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
     }
 
     render() {
@@ -16,7 +22,12 @@ class Person extends Component {
             <Aux>
                 <p onClick={this.props.click} > I'm {this.props.name}. My age is {this.props.age}.</p>
                 <p> {this.props.children}</p >
-                <input ref={(inputEl) => { this.inputElement = inputEl }} type="text" onChange={this.props.change} value={this.props.name} />
+                <input
+                    // ref={(inputEl) => { this.inputElement = inputEl }}
+                    ref={this.inputElementRef}
+                    type="text"
+                    onChange={this.props.change}
+                    value={this.props.name} />
             </Aux>
         )
     };

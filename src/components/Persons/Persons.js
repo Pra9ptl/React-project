@@ -42,7 +42,9 @@ class Persons extends Component {
                     name={p.name}
                     key={p.id}
                     age={p.age}
-                    change={(event) => this.props.change(event, p.id)} />
+                    change={(event) => this.props.change(event, p.id)}
+                    isAuth={this.props.isAuthenticated}
+                    />
             );
         });
     };

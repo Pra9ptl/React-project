@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.css';
 import AuthContext from '../../context/auth-context';
 
@@ -18,6 +18,11 @@ const cockpit = (props) => {
     //         alert('Saved date to cloud');
     //     }, 1000);
     // }, [props.persons]);
+
+    //For functional based components only
+    const authContext = useContext(AuthContext);
+
+    console.log(authContext.authenticated);
 
     //this useEffect will run only for the first time as it  has no depedency change
     useEffect(() => {
@@ -44,7 +49,7 @@ const cockpit = (props) => {
     const assignedClasses = [];
     let btnClass = '';
 
-    if (props.showPerson) {
+    if (props.showPersons) {
         btnClass = classes.Red;
     }
 
@@ -63,9 +68,7 @@ const cockpit = (props) => {
             <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
                 Toggle Persons
             </button>
-            <AuthContext.Consumer>
-                {(context) => <button onClick={context.login}>Log In</button> }
-            </AuthContext.Consumer>
+            <button onClick={authContext.login}>Log In</button>
         </div>
     );
 };
